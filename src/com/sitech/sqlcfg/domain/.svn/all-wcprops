@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/basd/!svn/ver/84279/ra/ras/Trunk/sqlCfg/src/com/sitech/sqlcfg/domain
+END
+TbQuerySqlCfg.java
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/basd/!svn/ver/84279/ra/ras/Trunk/sqlCfg/src/com/sitech/sqlcfg/domain/TbQuerySqlCfg.java
+END
+TbExecsql.java
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/basd/!svn/ver/84279/ra/ras/Trunk/sqlCfg/src/com/sitech/sqlcfg/domain/TbExecsql.java
+END
+TbParamCfg.java
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/basd/!svn/ver/84279/ra/ras/Trunk/sqlCfg/src/com/sitech/sqlcfg/domain/TbParamCfg.java
+END
+TbSqlCfg.java
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/basd/!svn/ver/84279/ra/ras/Trunk/sqlCfg/src/com/sitech/sqlcfg/domain/TbSqlCfg.java
+END

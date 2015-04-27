@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/basd/!svn/ver/135420/ra/ras/Trunk/sqlCfg/src/com/sitech/sqlcfg/check/impl
+END
+OracleCheck.java
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/basd/!svn/ver/129687/ra/ras/Trunk/sqlCfg/src/com/sitech/sqlcfg/check/impl/OracleCheck.java
+END
+HiveCheck.java
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/basd/!svn/ver/100692/ra/ras/Trunk/sqlCfg/src/com/sitech/sqlcfg/check/impl/HiveCheck.java
+END
+MysqlCheck.java
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/basd/!svn/ver/135420/ra/ras/Trunk/sqlCfg/src/com/sitech/sqlcfg/check/impl/MysqlCheck.java
+END

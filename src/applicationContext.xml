@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+            http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+            http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-2.5.xsd
+            http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd"
+	default-lazy-init="true">
+	<!--引入jdbc配置文件 -->
+	<context:property-placeholder location="LoginInfo.properties" />
+	<!--创建jdbc数据源 -->
+	<bean id="dataSource" class="com.sitech.sqlcfg.dao.SitechDataSource">
+		<property name="driverClassName" value="${sqlCfgClassforName}" />
+		<property name="url" value="${sqlCfgurl}" />
+		<property name="username" value="${sqlCfguser}" />
+		<property name="password" value="${sqlCfgpassword}" />
+		<property name="initialSize" value="${initialSize}" />
+		<property name="maxActive" value="${maxActive}" />
+		<property name="maxIdle" value="${maxIdle}" />
+		<property name="minIdle" value="${minIdle}" />
+		<property name="defaultAutoCommit" value="true"></property>
+	</bean>
+	<bean id="hiveDataSource" class="com.sitech.sqlcfg.dao.SitechDataSource">
+		<property name="driverClassName" value="${ClassforHive}" />
+		<property name="url" value="${hiveUrl}" />
+		<property name="username" value="${hiveUser}" />
+		<property name="password" value="${hivePwd}" />
+	</bean>
+	<!-- 创建SqlSessionFactory，同时指定数据源-->
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="configLocation" value="classpath:mybatis-config.xml"></property>
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+	<bean id="hiveSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="configLocation" value="classpath:mybatis-config.xml"></property>
+		<property name="dataSource" ref="hiveDataSource" />
+	</bean>
+	<!-- 创建Dao -->
+	<bean id="dbDao" class="com.sitech.sqlcfg.dao.DBDao">
+		<constructor-arg index="0" ref="sqlSessionFactory" />
+	</bean>
+	<bean id="hiveDao" class="com.sitech.sqlcfg.dao.DBDao">
+		<constructor-arg index="0" ref="hiveSessionFactory" />
+	</bean>
+	<!--  创建解析服务 -->
+	<bean id="oracleParse" class="com.sitech.sqlcfg.parse.impl.OracleParse">
+		<property name="dbDao" ref="dbDao"></property>
+	</bean>
+	<bean id="mysqlParse" class="com.sitech.sqlcfg.parse.impl.MysqlParse">
+		<property name="dbDao" ref="dbDao"></property>
+	</bean>
+	<bean id="parseService" class="com.sitech.sqlcfg.parse.service.ParseService">
+		<property name="parse" ref="${dbtype}Parse"></property>
+	</bean>
+	<!--  创建检查服务 -->
+	<bean id="oracleCheck" class="com.sitech.sqlcfg.check.impl.OracleCheck">
+		<property name="dbDao" ref="dbDao"></property>
+	</bean>
+	<bean id="mysqlCheck" class="com.sitech.sqlcfg.check.impl.MysqlCheck">
+		<property name="dbDao" ref="dbDao"></property>
+	</bean>
+	<bean id="hiveCheck" class="com.sitech.sqlcfg.check.impl.HiveCheck">
+		<property name="dbDao" ref="hiveDao"></property>
+	</bean>
+	<bean id="checkService" class="com.sitech.sqlcfg.check.service.CheckService">
+		<property name="check" ref="${execType}Check"></property>
+	</bean>
+	<!-- 创建运行服务 -->
+	<bean id="oracleRun" class="com.sitech.sqlcfg.run.impl.OracleRun">
+		<property name="dbDao" ref="dbDao"></property>
+	</bean>
+	<bean id="mysqlRun" class="com.sitech.sqlcfg.run.impl.MysqlRun">
+		<property name="dbDao" ref="dbDao"></property>
+	</bean>
+	<bean id="hiveRun" class="com.sitech.sqlcfg.run.impl.HiveRun">
+		<property name="dbType" value="${dbtype}"></property>
+		<property name="dbDao" ref="dbDao"></property>
+		<property name="hiveDao" ref="hiveDao"></property>
+	</bean>
+	<bean id="runService" class="com.sitech.sqlcfg.run.service.RunService">
+		<property name="run" ref="${execType}Run"></property>
+	</bean>
+</beans>

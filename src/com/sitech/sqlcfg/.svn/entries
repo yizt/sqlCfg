@@ -1,0 +1,83 @@
+10
+
+dir
+151737
+http://172.16.9.106:9001/svn/basd/ra/ras/Trunk/sqlCfg/src/com/sitech/sqlcfg
+http://172.16.9.106:9001/svn/basd
+
+
+
+2014-05-07T07:15:01.133651Z
+135422
+jiamw
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+d4d09664-1de8-4e09-91c8-361f59daea38
+
+Start.java
+file
+
+
+
+
+2014-08-14T06:22:59.000000Z
+db3e67e72b4ed3f228944675ad64577f
+2013-06-28T08:15:24.909472Z
+85694
+yizt
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+2307
+
+check
+dir
+
+dao
+dir
+
+domain
+dir
+
+parse
+dir
+
+run
+dir
+
+test
+dir
+
+util
+dir
+
