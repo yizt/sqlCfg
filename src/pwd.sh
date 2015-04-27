@@ -1,1 +1,0 @@
-$JAVA_HOME/bin/java com.sitech.sqlcfg.util.DesEncrypterIsmp $1
